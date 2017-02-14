@@ -70,7 +70,7 @@ public class GameArena
 
         // Create a window
         window = new JFrame();
-        window.setTitle("Let's Play!");
+        window.setTitle("Sultan Studios");
 
         // Create a JavaFX canvas as a Swing panel.
         jfxPanel = new JFXPanel();
