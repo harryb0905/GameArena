@@ -72,6 +72,8 @@ public class Block
     public Block(int heightNum)
     {
         this.height = blockHeights[heightNum];
+        this.xPosition = 800;
+        this.yPosition = 400;
         
     }
 
