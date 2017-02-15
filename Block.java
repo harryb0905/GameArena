@@ -2,7 +2,7 @@ public class Block
 {
     
     // fixed block width + heights
-    private static final int width = 20;
+    private int width;
     private static final int[] blockHeights = {10, 20, 30, 40, 50};
     
     // shape variables
@@ -62,14 +62,12 @@ public class Block
     
     
     // constructor
-    public Block(int heightNum, int start, int gap)
+    public Block(int width, int heightNum, int start, int gap, int yPos)
     {
+        this.width = width;
         this.height = blockHeights[heightNum];
         this.xPosition = start + gap;
-        this.yPosition = 400;
-        
+        this.yPosition = yPos;
     }
-
-
 
 }

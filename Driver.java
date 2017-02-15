@@ -19,6 +19,10 @@ public class Driver
         
         noOfBlocks = level.getNoOfBlocks(currentLevel);
         Block[] blocks = new Block[noOfBlocks];
+        Block groundBlock = new Block(1000, 4, 500, 0, 475);
+        
+        // ground block
+        screen.addBlock(groundBlock);
         
         System.out.println("Shapes to be used on level " + currentLevel + " is: " + noOfBlocks);
         
@@ -26,7 +30,7 @@ public class Driver
         for (int i = 0; i < noOfBlocks; i++)
         {
             randHeight = (int) (Math.random() * (5));
-            blocks[i] = new Block(randHeight, start, gap);
+            blocks[i] = new Block(20, randHeight, start, gap, 400);
             System.out.println("Block has width: " + blocks[i].getWidth() + " and height: " + blocks[i].getHeight());
             
             start += 400;
