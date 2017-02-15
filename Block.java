@@ -7,7 +7,7 @@ public class Block
     
     // shape variables
     private int height;
-    private String colour;
+    private String colour = "BLACK";
     private double xPosition;
     private double yPosition;
     private int dx;
@@ -35,6 +35,18 @@ public class Block
     public double getYPosition()
     {
         return yPosition;
+    }
+    
+    // sets new xPosition to xPos
+    public void setXPosition(double xPos)
+    {
+        this.xPosition = xPos;
+    }
+    
+    // sets new yPosition to yPos
+    public void setYPosition(double yPos)
+    {
+        this.yPosition = yPos;
     }
     
     // returns change in x value
