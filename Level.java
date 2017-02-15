@@ -5,6 +5,11 @@ public class Level {
     
     
     
+    // return number of shapes for current level
+    public int getNoOfShapes(int currentLevel)
+    {
+        return objPerLvl[currentLevel-1];
+    }
     
     
     
