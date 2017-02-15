@@ -1,8 +1,6 @@
 public class Driver
 {
     
-    // private static int noOfShapes = 30;
-
     public static void main(String[] args)
     {
         int currentLevel = 1;
@@ -18,8 +16,8 @@ public class Driver
         
         for (int i = 0; i < noOfShapes; i++)
         {
-            
-            shapes[i] = new Shape(Math.random() * (9), Math.random() );
+            // heightNums: 1=easy height, 2=normal height, 3=hard height
+            shapes[i] = new Shape(Math.random() * (3));
             
         }
         

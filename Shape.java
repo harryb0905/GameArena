@@ -2,13 +2,16 @@ public class Shape
 {
     
     // fixed block width + heights
-    private static final int widthBlock = 30;
-    private static final int easyHeightBlock = 10;
-    private static final int normalHeightBlock = 20;
-    private static final int hardHeightBlock = 30;
+    private static final int widthBlock = 20;
+    private static final int[] blockHeights = {10, 30, 50};
     
     // shape variables
-    private int
+    private int height;
+    private String colour;
+    private double xPosition;
+    private double yPosition;
+    private int dx;
+    private int dy;
     
     // returns standard width
     public int getWidthBlock()
@@ -35,11 +38,9 @@ public class Shape
     }
     
     // constructor
-    public Shape(int height)
+    public Shape(int heightNum)
     {
-        
-        
-        
+        this.height = blockHeights[heightNum];
         
     }
 
