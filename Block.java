@@ -10,7 +10,8 @@ public class Block
     private String colour;
     private double xPosition;
     private double yPosition;
-    private int dx = 5;
+    private int dx = 7;
+    private double offsetToGround;
     
     // returns width of block
     public int getWidth()
@@ -61,12 +62,25 @@ public class Block
     }
     
     
-    // constructor
-    public Block(int width, int heightNum, int start, int gap, int yPos, String colour)
+    // create block constructor
+    public Block(int width, int heightNum, int xPos, int gap, int yPos, String colour)
     {
         this.width = width;
         this.height = blockHeights[heightNum];
-        this.xPosition = start + gap;
+        this.xPosition = xPos + gap;
+        
+        // yPos of block = 400 + offset to ground
+        offsetToGround = 450 - (400 + (this.height/2));
+        this.yPosition = 400 + (offsetToGround);
+        this.colour = colour;
+    }
+    
+    // create ground constructor
+    public Block(int width, int height, int xPos, int yPos, String colour)
+    {
+        this.width = width;
+        this.height = height;
+        this.xPosition = xPos;
         this.yPosition = yPos;
         this.colour = colour;
     }

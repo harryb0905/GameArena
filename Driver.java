@@ -19,7 +19,7 @@ public class Driver
         
         noOfBlocks = level.getNoOfBlocks(currentLevel);
         Block[] blocks = new Block[noOfBlocks];
-        Block groundBlock = new Block(1000, 4, 500, 0, 475, "WHITE");
+        Block groundBlock = new Block(1000, 50, 500, 475, "WHITE");
         
         // ground block
         screen.addBlock(groundBlock);
