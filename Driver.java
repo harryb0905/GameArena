@@ -17,7 +17,7 @@ public class Driver
         for (int i = 0; i < noOfShapes; i++)
         {
             // heightNums: 1=easy height, 2=normal height, 3=hard height
-            shapes[i] = new Shape(Math.random() * (3));
+            shapes[i] = new Shape( (int) Math.random() * (3));
             
         }
         

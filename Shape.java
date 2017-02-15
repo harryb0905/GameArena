@@ -13,28 +13,40 @@ public class Shape
     private int dx;
     private int dy;
     
-    // returns standard width
+    // returns width of block
     public int getWidthBlock()
     {
         return widthBlock;
     }
     
-    // returns easiest height
-    public int getEasyHeightBlock()
+    // returns height of block
+    public int getHeight()
     {
-        return easyHeightBlock;
+        return height;
     }
     
-    // returns normal height
-    public int getNormalHeight()
+    // returns xPosition on screen
+    public double getXPosition()
     {
-        return normalHeightBlock;
+        return xPosition;
     }
     
-    // returns hardest height
-    public int getHardHeightBlock()
+    // returns yPosition on screen
+    public double getYPosition()
     {
-        return hardHeightBlock;
+        return yPosition;
+    }
+    
+    // returns change in x value
+    public int getDx()
+    {
+        return dx;
+    }
+    
+    // returns change in y value
+    public int getDy()
+    {
+        return dy;
     }
     
     // constructor
