@@ -6,6 +6,13 @@ public class Driver
         int currentLevel = 1;
         int noOfBlocks;
         int randHeight;
+        double currentXPos;
+        double currentDx;
+        
+        // TBC
+        int start = 500;
+        int gap = 300;
+        
         
         GameArena screen = new GameArena(1000,500);
         Level level = new Level();
@@ -18,20 +25,52 @@ public class Driver
         // generate heights and add to screen
         for (int i = 0; i < noOfBlocks; i++)
         {
-            // heightNums: 1=easy height, 2=normal height, 3=hard height
             randHeight = (int) (Math.random() * (5));
-            blocks[i] = new Block(randHeight);
+            blocks[i] = new Block(randHeight, start, gap);
             System.out.println("Block has width: " + blocks[i].getWidth() + " and height: " + blocks[i].getHeight());
-            //screen.addBlock(blocks[i]);
-
+            
+            start += 400;
+            
+            // add block to screen
+            screen.addBlock(blocks[i]);
+            
         }
         
-        // add block to screen
-        screen.addBlock(blocks[0]);
-
         
+        
+        
+        // make blocks move
+        while (true)
+        {
+            for (int j = 0; j < noOfBlocks; j++)
+            {
+                
+                // get the xPosition of the block
+                currentXPos = blocks[j].getXPosition();
+                
+                // get the dx value of the block
+                currentDx = blocks[j].getDx();
+                
+                // update the current x position of the block to existing pos + new x
+                currentXPos -= currentDx;
+                
+                // set xPosition of each block to new position
+                blocks[j].setXPosition(currentXPos);
+                
+            }
+            
+            // pause the window
+            screen.pause();
+        
+            
+        }
+        
+        
+
     }
-
-
-
+    
+    
+    
 }
+
+

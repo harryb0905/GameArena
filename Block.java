@@ -10,8 +10,7 @@ public class Block
     private String colour = "WHITE";
     private double xPosition;
     private double yPosition;
-    private int dx;
-    private int dy;
+    private int dx = 5;
     
     // returns width of block
     public int getWidth()
@@ -49,12 +48,6 @@ public class Block
         return dx;
     }
     
-    // returns change in y value
-    public int getDy()
-    {
-        return dy;
-    }
-    
     // sets new xPosition to xPos
     public void setXPosition(double xPos)
     {
@@ -69,10 +62,10 @@ public class Block
     
     
     // constructor
-    public Block(int heightNum)
+    public Block(int heightNum, int start, int gap)
     {
         this.height = blockHeights[heightNum];
-        this.xPosition = 800;
+        this.xPosition = start + gap;
         this.yPosition = 400;
         
     }
