@@ -24,6 +24,11 @@ public class Driver
             
         }
         
+        screen.addBlock(blocks[0]);
+        
+        Ball b = new Ball(5,5,5,"WHITE");
+        
+        screen.addBall(b);
         
         
         

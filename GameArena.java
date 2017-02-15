@@ -41,7 +41,7 @@ public class GameArena
     private List<Object> addList = new ArrayList<Object>();
     private List<Object> removeList = new ArrayList<Object>();
     private Map<Ball, javafx.scene.shape.Circle> balls = new HashMap<>();
-    private Map<Rectangle, javafx.scene.shape.Rectangle> rectangles = new HashMap<>();
+    private Map<Block, javafx.scene.shape.Rectangle> blocks = new HashMap<>();
     private int objectCount;
 
     // Basic button state
@@ -165,13 +165,13 @@ public class GameArena
                         balls.remove(b);
                     }
 
-                    if (o instanceof Rectangle)
+                    if (o instanceof Block)
                     {
-                        Rectangle r = (Rectangle) o;
-                        javafx.scene.shape.Rectangle rectangle = rectangles.get(r);
-                        root.getChildren().remove(rectangle);
+                        Block block = (Block) o;
+                        javafx.scene.shape.Rectangle oldBlock = blocks.get(block);
+                        root.getChildren().remove(oldBlock);
 
-                        rectangles.remove(r);
+                        blocks.remove(block);
                     }
                 }
 
@@ -188,12 +188,12 @@ public class GameArena
                         balls.put(b, c);
                     }
 
-                    if (o instanceof Rectangle)
+                    if (o instanceof Block)
                     {
-                        Rectangle r = (Rectangle) o;
-                        javafx.scene.shape.Rectangle rectangle = new javafx.scene.shape.Rectangle(0, 0, r.getWidth(), r.getHeight());
-                        root.getChildren().add(rectangle);
-                        rectangles.put(r, rectangle);
+                        Block r = (Block) o;
+                        javafx.scene.shape.Rectangle newBlock = new javafx.scene.shape.Rectangle(0, 0, r.getWidth(), r.getHeight());
+                        root.getChildren().add(newBlock);
+                        blocks.put(r, newBlock);
                     }
                 }
 
@@ -211,14 +211,14 @@ public class GameArena
                 c.setFill(getColourFromString(b.getColour()));
             }
 
-            for(Map.Entry<Rectangle, javafx.scene.shape.Rectangle> entry : rectangles.entrySet())
+            for(Map.Entry<Block, javafx.scene.shape.Rectangle> entry : blocks.entrySet())
             {
-                Rectangle r = entry.getKey();
-                javafx.scene.shape.Rectangle rectangle = entry.getValue();
+                Block block = entry.getKey();
+                javafx.scene.shape.Rectangle currentBlock = entry.getValue();
 
-                rectangle.setTranslateX(r.getXPosition() - r.getWidth()/2);
-                rectangle.setTranslateY(r.getYPosition() - r.getHeight()/2);
-                rectangle.setFill(getColourFromString(r.getColour()));
+                currentBlock.setTranslateX(block.getXPosition() - block.getWidth()/2);
+                currentBlock.setTranslateY(block.getYPosition() - block.getHeight()/2);
+                currentBlock.setFill(getColourFromString(block.getColour()));
             }
         }
     }

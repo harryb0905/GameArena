@@ -37,16 +37,10 @@ public class Block
         return yPosition;
     }
     
-    // sets new xPosition to xPos
-    public void setXPosition(double xPos)
+    // returns the colour of the block
+    public String getColour()
     {
-        this.xPosition = xPos;
-    }
-    
-    // sets new yPosition to yPos
-    public void setYPosition(double yPos)
-    {
-        this.yPosition = yPos;
+        return colour;
     }
     
     // returns change in x value
@@ -60,6 +54,19 @@ public class Block
     {
         return dy;
     }
+    
+    // sets new xPosition to xPos
+    public void setXPosition(double xPos)
+    {
+        this.xPosition = xPos;
+    }
+    
+    // sets new yPosition to yPos
+    public void setYPosition(double yPos)
+    {
+        this.yPosition = yPos;
+    }
+    
     
     // constructor
     public Block(int heightNum)
