@@ -7,7 +7,7 @@ public class Block
     
     // shape variables
     private int height;
-    private String colour = "WHITE";
+    private String colour;
     private double xPosition;
     private double yPosition;
     private int dx = 5;
@@ -62,12 +62,13 @@ public class Block
     
     
     // constructor
-    public Block(int width, int heightNum, int start, int gap, int yPos)
+    public Block(int width, int heightNum, int start, int gap, int yPos, String colour)
     {
         this.width = width;
         this.height = blockHeights[heightNum];
         this.xPosition = start + gap;
         this.yPosition = yPos;
+        this.colour = colour;
     }
 
 }
