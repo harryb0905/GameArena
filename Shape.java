@@ -2,7 +2,7 @@ public class Shape
 {
     
     // fixed block width + heights
-    private static final int widthBlock = 20;
+    private static final int width = 20;
     private static final int[] blockHeights = {10, 30, 50};
     
     // shape variables
@@ -14,9 +14,9 @@ public class Shape
     private int dy;
     
     // returns width of block
-    public int getWidthBlock()
+    public int getWidth()
     {
-        return widthBlock;
+        return width;
     }
     
     // returns height of block
