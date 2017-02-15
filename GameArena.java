@@ -277,13 +277,15 @@ public class GameArena
 		}
 	}
 
+    
+    
 	/**
-	 * Adds a given rectangle to the GameArena. 
-	 * Once a Rectangle is added, it will automatically appear on the window. 
+	 * Adds a given block to the GameArena.
+	 * Once a block is added, it will automatically appear on the window.
 	 *
-	 * @param r the rectangle to add to the GameArena.
+	 * @param block the block to add to the GameArena.
 	 */
-	public void addRectangle(Rectangle r)
+	public void addBlock(Block block)
 	{
 		synchronized (this)
 		{
@@ -299,29 +301,31 @@ public class GameArena
                 System.exit(0);
 			}
 
-            // Add this ball to the draw list. Initially, with a null JavaFX entry, which we'll fill in later to avoid cross-thread operations...
-            removeList.remove(r);
-            addList.add(r);
+            // Add this block to the draw list. Initially, with a null JavaFX entry, which we'll fill in later to avoid cross-thread operations...
+            removeList.remove(block);
+            addList.add(block);
             objectCount++;
 		}
 	}
 
 	/**
-	 * Remove a Rectangle from the GameArena. 
-	 * Once a Rectangle is removed, it will no longer appear on the window. 
+	 * Remove a Block from the GameArena.
+	 * Once a Block is removed, it will no longer appear on the window.
 	 *
-	 * @param r the rectangle to remove from the GameArena.
+	 * @param block the block to remove from the GameArena.
 	 */
-	public void removeRectangle(Rectangle r)
+	public void removeBlock(Block block)
 	{
 		synchronized (this)
 		{
-            addList.remove(r);
-            removeList.add(r);
+            addList.remove(block);
+            removeList.add(block);
             objectCount--;
 		}
 	}
 
+    
+    
 	/**
 	 * Pause for a 1/50 of a second. 
 	 * This method causes your program to delay for 1/50th of a second. You'll find this useful if you're trying to animate your application.
