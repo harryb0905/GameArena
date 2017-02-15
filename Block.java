@@ -1,9 +1,9 @@
-public class Shape
+public class Block
 {
     
     // fixed block width + heights
     private static final int width = 20;
-    private static final int[] blockHeights = {10, 30, 50};
+    private static final int[] blockHeights = {10, 30, 40};
     
     // shape variables
     private int height;
@@ -50,7 +50,7 @@ public class Shape
     }
     
     // constructor
-    public Shape(int heightNum)
+    public Block(int heightNum)
     {
         this.height = blockHeights[heightNum];
         
