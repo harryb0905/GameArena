@@ -1,38 +1,41 @@
 public class Shape
 {
     
-    // fixed shape widths/heights
-    private static final int width = 30;
-    private static final int easyHeight = 10;
-    private static final int normalHeight = 50;
-    private static final int hardHeight = 100;
+    // fixed block width + heights
+    private static final int widthBlock = 30;
+    private static final int easyHeightBlock = 10;
+    private static final int normalHeightBlock = 20;
+    private static final int hardHeightBlock = 30;
+    
+    // shape variables
+    private int
     
     // returns standard width
-    public int getWidth()
+    public int getWidthBlock()
     {
-        return width;
+        return widthBlock;
     }
     
     // returns easiest height
-    public int getEasyHeight()
+    public int getEasyHeightBlock()
     {
-        return easyHeight;
+        return easyHeightBlock;
     }
     
     // returns normal height
     public int getNormalHeight()
     {
-        return normalHeight;
+        return normalHeightBlock;
     }
     
     // returns hardest height
-    public int getHardHeight()
+    public int getHardHeightBlock()
     {
-        return hardHeight;
+        return hardHeightBlock;
     }
     
     // constructor
-    public Shape(int width, int height)
+    public Shape(int height)
     {
         
         
