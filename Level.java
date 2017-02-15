@@ -1,14 +1,16 @@
 public class Level {
 
-    // objects per level array
-    private static final int[] objPerLvl = {20,30,40,50,75,100,250,500,750,1000};
+    // blocks per level array
+    private static final int[] blocksPerLvl = {20,30,40,50,75,100,250,500,750,1000};
+    
+    // block frequency ranges per level
+    private static int[] ranges = {1,1,2,2,3,3,4,4,5,5};
     
     
-    
-    // return number of shapes for current level
-    public int getNoOfShapes(int currentLevel)
+    // return number of blocks for current level
+    public int getNoOfBlocks(int currentLevel)
     {
-        return objPerLvl[currentLevel-1];
+        return blocksPerLvl[currentLevel-1];
     }
     
     

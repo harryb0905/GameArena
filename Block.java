@@ -3,11 +3,11 @@ public class Block
     
     // fixed block width + heights
     private static final int width = 20;
-    private static final int[] blockHeights = {10, 30, 40};
+    private static final int[] blockHeights = {10, 20, 30, 40, 50};
     
     // shape variables
     private int height;
-    private String colour = "BLACK";
+    private String colour = "WHITE";
     private double xPosition;
     private double yPosition;
     private int dx;
