@@ -2,22 +2,45 @@ public class Driver
 {
     public static void main(String[] args)
     {
-        int currentLevel = 1;
         int noOfBlocks;
         int randHeight;
         double currentXPos;
         double currentDx;
         
-        // starting pos and block gap
+        int currentLevel = 1;
+        
+        // particular menu button is pressed, these bools change
+        boolean easySelected = false;
+        boolean moderateSelected = false;
+        boolean hardSelected = false;
+        
+        // starting pos
         int startX = 1000;
-        int gap = 300;
         
+        // new game
         GameArena screen = new GameArena(1000,500);
-        Level level = new Level();
         
+        Level level = new Level();
         noOfBlocks = level.getNoOfBlocks(currentLevel);
+        
+    
+//        // when user presses a button, start the game
+//        if (easySelected)
+//        {
+//            Game newGame = new Game(1);
+//        }
+//        else if (moderateSelected)
+//        {
+//            Game newGame = new Game(2);
+//        }
+//        else if (hardSelected)
+//        {
+//            Game newGame = new Game(3);
+//        }
+        
+        
         Block[] blocks = new Block[noOfBlocks];
-        Block groundBlock = new Block(1000, 50, 500, 475, "WHITE");
+        Block groundBlock = new Block(1000, 50, 500, 475);
         
         // ground block
         screen.addBlock(groundBlock);
@@ -29,7 +52,7 @@ public class Driver
         for (int i = 0; i < noOfBlocks; i++)
         {
             randHeight = (int) (Math.random() * (5));
-            blocks[i] = new Block(20, randHeight, startX, gap, 400, "WHITE");
+            blocks[i] = new Block(20, randHeight, startX, 400, "WHITE");
             System.out.println("Block has width: " + blocks[i].getWidth() + " and height: " + blocks[i].getHeight());
             
             startX += 400;

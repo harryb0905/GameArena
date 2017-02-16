@@ -63,11 +63,11 @@ public class Block
     
     
     // create block constructor
-    public Block(int width, int heightNum, int xPos, int gap, int yPos, String colour)
+    public Block(int width, int heightNum, int xPos, int yPos, String colour)
     {
         this.width = width;
         this.height = blockHeights[heightNum];
-        this.xPosition = xPos + gap;
+        this.xPosition = xPos;
         
         // yPos of block = 400 + offset to ground
         offsetToGround = 450 - (400 + (this.height/2));
@@ -76,13 +76,13 @@ public class Block
     }
     
     // create ground constructor
-    public Block(int width, int height, int xPos, int yPos, String colour)
+    public Block(int width, int height, int xPos, int yPos)
     {
         this.width = width;
         this.height = height;
         this.xPosition = xPos;
         this.yPosition = yPos;
-        this.colour = colour;
+        this.colour = "WHITE";
     }
 
 }

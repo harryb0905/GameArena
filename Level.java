@@ -1,10 +1,12 @@
 public class Level {
 
     // blocks per level array
-    private static final int[] blocksPerLvl = {20,30,40,50,75,100,250,500,750,1000};
+    private static final int[] blocksPerLvl = {20,40,60};
     
     // block frequency ranges per level
     private static int[] ranges = {1,1,2,2,3,3,4,4,5,5};
+    
+    private static int[] gaps = {300,200,100};
     
     
     // return number of blocks for current level
@@ -12,7 +14,6 @@ public class Level {
     {
         return blocksPerLvl[currentLevel-1];
     }
-    
     
     
     
