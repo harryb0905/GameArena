@@ -29,7 +29,7 @@ public class Driver
         for (int i = 0; i < noOfBlocks; i++)
         {
             randHeight = (int) (Math.random() * (5));
-            blocks[i] = new Block(20, randHeight, startX, gap, 400, "YELLOW");
+            blocks[i] = new Block(20, randHeight, startX, gap, 400, "WHITE");
             System.out.println("Block has width: " + blocks[i].getWidth() + " and height: " + blocks[i].getHeight());
             
             startX += 400;

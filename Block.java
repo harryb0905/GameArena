@@ -10,7 +10,7 @@ public class Block
     private String colour;
     private double xPosition;
     private double yPosition;
-    private int dx = 7;
+    private int dx = 5;
     private double offsetToGround;
     
     // returns width of block
