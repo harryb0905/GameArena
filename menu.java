@@ -4,7 +4,7 @@ public class Menu {
     {
         
         // 3 buttons, title, background image constantly moving, music, labels
-        // THIS IS SOME CHANGES ON THE MENU BRANCH
+        // THIS IS SOME CHANGES ON THE MASTER BRANCH
         
     }
 }
