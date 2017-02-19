@@ -4,10 +4,10 @@ public class Game
     public static void main(String[] args)
     {
         int noOfBlocks;
-        int deletedBlocks = 0;
-        int randHeight;
-        int blocksOnScreen = 0;
+        int randHeightVal;
+        int blocksOnScreen;
         int currentLevel = 3;
+        int currentGap;
         
         double currentXPos = 0;
         double currentDx;
@@ -22,7 +22,7 @@ public class Game
         
         
         
-        // main menu instances
+        // main menu instances - once button pressed, returns levelType int (1,2,3)
         
         ///// while (true) {}
         
@@ -32,10 +32,13 @@ public class Game
         
         
         // level instance and variables
+        // currentLevel = menu.getLevelType(); SOMETHING LIKE THAT
         Level level = new Level(currentLevel);
         currentLevel = level.getLevelType();
         
         noOfBlocks = level.getNoOfBlocks(currentLevel);
+        currentGap = level.getGap(currentLevel);
+        
         blocksOnScreen = noOfBlocks;
         
         // blocks
@@ -48,10 +51,10 @@ public class Game
         // generate heights and add to screen
         for (int i = 0; i < noOfBlocks; i++)
         {
-            randHeight = (int) (Math.random() * (5));
-            blocks[i] = new Block(20, randHeight, startX, startY, "WHITE");
+            randHeightVal = (int) (Math.random() * (5));
+            blocks[i] = new Block(20, randHeightVal, startX, startY, "WHITE");
             
-            startX += 400;
+            startX += currentGap;
             
             screen.addBlock(blocks[i]);
         }

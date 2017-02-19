@@ -1,14 +1,11 @@
 public class Level {
 
-    // blocks per level array
+    // blocks per level array (e,m,h)
     private static final int[] blocksPerLvl = {20,40,60};
     private int levelType;
     
-    // block frequency ranges per level
-    private static int[] ranges = {1,1,2,2,3,3,4,4,5,5};
-    
-    private static int[] gaps = {300,200,100};
-    
+    // block gaps for each level type (e,m,h)
+    private static int[] gaps = {300,250,200};
     
     // return number of blocks for current level
     public int getNoOfBlocks(int currentLevel)
@@ -20,6 +17,12 @@ public class Level {
     public int getLevelType()
     {
         return levelType;
+    }
+    
+    // returns the current gap
+    public int getGap(int currentLevel)
+    {
+        return gaps[currentLevel-1];
     }
     
     // constructor
