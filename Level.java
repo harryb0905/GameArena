@@ -2,6 +2,7 @@ public class Level {
 
     // blocks per level array
     private static final int[] blocksPerLvl = {20,40,60};
+    private int levelType;
     
     // block frequency ranges per level
     private static int[] ranges = {1,1,2,2,3,3,4,4,5,5};
@@ -15,15 +16,15 @@ public class Level {
         return blocksPerLvl[currentLevel-1];
     }
     
-    
+    // returns the current level type (e,m,h)
+    public int getLevelType()
+    {
+        return levelType;
+    }
     
     // constructor
-    public Level()
+    public Level(int levelType)
     {
-        
-        
-        
+        this.levelType = levelType;
     }
-
-
 }

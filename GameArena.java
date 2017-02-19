@@ -336,6 +336,15 @@ public class GameArena
 		catch (Exception e) {};
 	}
 
+    /**
+     * Gets the number of objects in the GameArena window.
+     * @return the number of objects
+     */
+    public int getNoOfObjects()
+    {
+        return objectCount;
+    }
+    
 	/** 
 	 * Gets the width of the GameArena window, in pixels.
 	 * @return the width in pixels
