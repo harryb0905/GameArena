@@ -8,7 +8,7 @@ public class Game
         int blocksOnScreen;
         
         // depends on selected value from main menu
-        int currentLevel = 3;
+        int currentLevel = 1;
         
         int currentGap;
         
@@ -41,6 +41,9 @@ public class Game
         
         noOfBlocks = level.getNoOfBlocks(currentLevel);
         currentGap = level.getGap(currentLevel);
+        
+        System.out.println("GAP IS: " + currentGap);
+        
         
         blocksOnScreen = noOfBlocks;
         

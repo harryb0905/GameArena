@@ -5,7 +5,7 @@ public class Level {
     private int levelType;
     
     // block gaps for each level type (e,m,h)
-    private static int[] gaps = {300,250,200};
+    private static int[] gaps = {400,350,300};
     
     // return number of blocks for current level
     public int getNoOfBlocks(int currentLevel)
