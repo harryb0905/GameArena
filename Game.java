@@ -1,12 +1,15 @@
 public class Game
 {
     // main method
-    public static void main(String[] args)
+    public Game()
     {
         int noOfBlocks;
         int randHeightVal;
         int blocksOnScreen;
+        
+        // depends on selected value from main menu
         int currentLevel = 3;
+        
         int currentGap;
         
         double currentXPos = 0;
