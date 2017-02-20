@@ -2,10 +2,11 @@ public class Level {
 
     // blocks per level array (e,m,h)
     private static final int[] blocksPerLvl = {20,40,60};
-    private int levelType;
     
     // block gaps for each level type (e,m,h)
     private static int[] gaps = {400,350,300};
+    
+    private int levelType;
     
     // return number of blocks for current level
     public int getNoOfBlocks(int currentLevel)

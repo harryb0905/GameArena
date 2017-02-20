@@ -1,19 +1,15 @@
 public class Game
 {
     // main method
-    public Game()
+    public Game(int currentLevel)
     {
         int noOfBlocks;
         int randHeightVal;
         int blocksOnScreen;
-        
-        // depends on selected value from main menu
-        int currentLevel = 1;
-        
         int currentGap;
         
         double currentXPos = 0;
-        double currentDx;
+        double currentSpeed;
         
         // starting pos
         int startX = 1000;
@@ -22,8 +18,7 @@ public class Game
         // new game
         GameArena screen = new GameArena(1000,500);
         
-        
-        
+        // add the image to the screen
         
         // main menu instances - once button pressed, returns levelType int (1,2,3)
         
@@ -31,20 +26,14 @@ public class Game
         
         // click button, then display game
         
-    
-        
         
         // level instance and variables
         // currentLevel = menu.getLevelType(); SOMETHING LIKE THAT
         Level level = new Level(currentLevel);
-        currentLevel = level.getLevelType();
         
+        currentLevel = level.getLevelType();
         noOfBlocks = level.getNoOfBlocks(currentLevel);
         currentGap = level.getGap(currentLevel);
-        
-        System.out.println("GAP IS: " + currentGap);
-        
-        
         blocksOnScreen = noOfBlocks;
         
         // blocks
@@ -65,6 +54,9 @@ public class Game
             screen.addBlock(blocks[i]);
         }
         
+        
+        // add the character
+        
         // make blocks move
         while (true)
         {
@@ -74,10 +66,10 @@ public class Game
                 currentXPos = blocks[j].getXPosition();
                 
                 // get the dx value of the block
-                currentDx = blocks[j].getDx();
+                currentSpeed = blocks[j].getSpeed();
                 
                 // update the current x position of the block to existing pos + new x
-                currentXPos -= currentDx;
+                currentXPos -= currentSpeed;
                 
                 // set xPosition of each block to new position
                 blocks[j].setXPosition(currentXPos);
@@ -95,8 +87,6 @@ public class Game
                 System.out.println("GAME FINISHED! RETRY?");
                 break;
             }
-            
         }
-    
     }
 }

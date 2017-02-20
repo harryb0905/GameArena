@@ -1,6 +1,5 @@
 public class Block
 {
-    
     // fixed block width + heights
     private int width;
     private static final int[] blockHeights = {10, 20, 30, 40, 50};
@@ -10,8 +9,7 @@ public class Block
     private String colour;
     private double xPosition;
     private double yPosition;
-    private int dx = 5;
-    private double offsetToGround;
+    private int speed = 5;
     
     // returns width of block
     public int getWidth()
@@ -44,9 +42,9 @@ public class Block
     }
     
     // returns change in x value
-    public int getDx()
+    public int getSpeed()
     {
-        return dx;
+        return speed;
     }
     
     // sets new xPosition to xPos
@@ -61,7 +59,12 @@ public class Block
         this.yPosition = yPos;
     }
     
-    
+    // sets the new speed value
+    public void setSpeed(int speed)
+    {
+        this.speed = speed;
+    }
+
     // create block constructor
     public Block(int width, int heightNum, int xPos, int yPos, String colour)
     {
@@ -70,8 +73,7 @@ public class Block
         this.xPosition = xPos;
         
         // yPos of block = 400 + offset to ground
-        offsetToGround = 450 - (400 + (this.height/2));
-        this.yPosition = 400 + (offsetToGround);
+        this.yPosition = 400 + (450 - (400 + (this.height/2)));
         this.colour = colour;
     }
     
@@ -84,5 +86,4 @@ public class Block
         this.yPosition = yPos;
         this.colour = "WHITE";
     }
-
 }
