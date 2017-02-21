@@ -2,6 +2,7 @@ import java.util.*;
 import java.util.Collections;
 import javafx.scene.input.KeyEvent;
 
+import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javafx.application.Platform;
@@ -13,6 +14,12 @@ import javafx.scene.paint.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 
 import java.awt.event.WindowEvent;
 
@@ -75,13 +82,56 @@ public class GameArena
         // Create a JavaFX canvas as a Swing panel.
         jfxPanel = new JFXPanel();
         jfxPanel.setPreferredSize(new java.awt.Dimension(width, height));
-
+        
+//        // add moving background image
+//        Image image = new Image("bg.png");
+//        ImageView iv1 = new ImageView();
+//        iv1.setImage(image);
+        
+        
+//        JPanel panel = (JPanel)window.getContentPane();
+//        
+//        JLabel label = new JLabel();
+//        label.setIcon(new ImageIcon("bg.png"));
+//        panel.add(label);
+        
+        
+        StackPane sp = new StackPane();
+        Image img = new Image("bg.png");
+        ImageView imgView = new ImageView(img);
+        sp.getChildren().add(imgView);
+        
+        Scene scene = new Scene(sp);
+        
+        
+        
         window.setContentPane(jfxPanel);
         window.setResizable(false);
         window.pack();
-        window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+        
+//        JFileChooser fc = new JFileChooser();
+//        
+//        BufferedImg img = ImageIO.read(fc.getSelectedFile());
+//        
+//        JLabel jLabelObject = new JLabel();
+//        
+//        jLabelObject.setIcon(new ImageIcon(img));
+//        
+//        window.getContentPane().add(jLabelObject);
+        
+        try {
+            image = ImageIO.read(new File("bg.png"));
+        }
+        catch (Exception e) { System.out.println(e); }
+        
+        
+        window.setVisible(true);
 
+        
+        
         root = new Group();
         scene = new Scene(root, arenaWidth, arenaHeight, Color.BLACK);
 
