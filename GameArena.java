@@ -49,6 +49,7 @@ public class GameArena
     private List<Object> removeList = new ArrayList<Object>();
     private Map<Ball, javafx.scene.shape.Circle> balls = new HashMap<>();
     private Map<Block, javafx.scene.shape.Rectangle> blocks = new HashMap<>();
+    private Map<Rectangle, javafx.scene.shape.Rectangle> rectangles = new HashMap<>();
     private int objectCount;
 
     // Basic button state
@@ -83,55 +84,12 @@ public class GameArena
         jfxPanel = new JFXPanel();
         jfxPanel.setPreferredSize(new java.awt.Dimension(width, height));
         
-//        // add moving background image
-//        Image image = new Image("bg.png");
-//        ImageView iv1 = new ImageView();
-//        iv1.setImage(image);
-        
-        
-//        JPanel panel = (JPanel)window.getContentPane();
-//        
-//        JLabel label = new JLabel();
-//        label.setIcon(new ImageIcon("bg.png"));
-//        panel.add(label);
-        
-        
-        StackPane sp = new StackPane();
-        Image img = new Image("bg.png");
-        ImageView imgView = new ImageView(img);
-        sp.getChildren().add(imgView);
-        
-        Scene scene = new Scene(sp);
-        
-        
-        
         window.setContentPane(jfxPanel);
         window.setResizable(false);
         window.pack();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
-        
-//        JFileChooser fc = new JFileChooser();
-//        
-//        BufferedImg img = ImageIO.read(fc.getSelectedFile());
-//        
-//        JLabel jLabelObject = new JLabel();
-//        
-//        jLabelObject.setIcon(new ImageIcon(img));
-//        
-//        window.getContentPane().add(jLabelObject);
-        
-        try {
-            image = ImageIO.read(new File("bg.png"));
-        }
-        catch (Exception e) { System.out.println(e); }
-        
-        
         window.setVisible(true);
 
-        
-        
         root = new Group();
         scene = new Scene(root, arenaWidth, arenaHeight, Color.BLACK);
 
@@ -223,6 +181,15 @@ public class GameArena
 
                         blocks.remove(block);
                     }
+                    
+                    if (o instanceof Rectangle)
+                    {
+                        Rectangle r = (Rectangle) o;
+                        javafx.scene.shape.Rectangle rectangle = rectangles.get(r);
+                        root.getChildren().remove(rectangle);
+                        
+                        rectangles.remove(r);
+                    }
                 }
 
                 removeList.clear();
@@ -244,6 +211,14 @@ public class GameArena
                         javafx.scene.shape.Rectangle newBlock = new javafx.scene.shape.Rectangle(0, 0, r.getWidth(), r.getHeight());
                         root.getChildren().add(newBlock);
                         blocks.put(r, newBlock);
+                    }
+                    
+                    if (o instanceof Rectangle)
+                    {
+                        Rectangle r = (Rectangle) o;
+                        javafx.scene.shape.Rectangle rectangle = new javafx.scene.shape.Rectangle(0, 0, r.getWidth(), r.getHeight());
+                        root.getChildren().add(rectangle);
+                        rectangles.put(r, rectangle);
                     }
                 }
 
@@ -269,6 +244,16 @@ public class GameArena
                 currentBlock.setTranslateX(block.getXPosition() - block.getWidth()/2);
                 currentBlock.setTranslateY(block.getYPosition() - block.getHeight()/2);
                 currentBlock.setFill(getColourFromString(block.getColour()));
+            }
+            
+            for(Map.Entry<Rectangle, javafx.scene.shape.Rectangle> entry : rectangles.entrySet())
+            {
+                Rectangle r = entry.getKey();
+                javafx.scene.shape.Rectangle rectangle = entry.getValue();
+                
+                rectangle.setTranslateX(r.getXPosition() - r.getWidth()/2);
+                rectangle.setTranslateY(r.getYPosition() - r.getHeight()/2);
+                rectangle.setFill(getColourFromString(r.getColour()));
             }
         }
     }
@@ -374,6 +359,50 @@ public class GameArena
 		}
 	}
 
+    /**
+     * Adds a given rectangle to the GameArena.
+     * Once a Rectangle is added, it will automatically appear on the window.
+     *
+     * @param r the rectangle to add to the GameArena.
+     */
+    public void addRectangle(Rectangle r)
+    {
+        synchronized (this)
+        {
+            if (objectCount > MAXIMUM_OBJECTS)
+            {
+                System.out.println("\n\n");
+                System.out.println(" ********************************************************* ");
+                System.out.println(" ***** Only 100000 Objects Supported per Game Arena! ***** ");
+                System.out.println(" ********************************************************* ");
+                System.out.println("\n");
+                System.out.println("-- Joe\n\n");
+                
+                System.exit(0);
+            }
+            
+            // Add this ball to the draw list. Initially, with a null JavaFX entry, which we'll fill in later to avoid cross-thread operations...
+            removeList.remove(r);
+            addList.add(r);
+            objectCount++;
+        }
+    }
+    
+    /**
+     * Remove a Rectangle from the GameArena.
+     * Once a Rectangle is removed, it will no longer appear on the window.
+     *
+     * @param r the rectangle to remove from the GameArena.
+     */
+    public void removeRectangle(Rectangle r)
+    {
+        synchronized (this)
+        {
+            addList.remove(r);
+            removeList.add(r);
+            objectCount--;
+        }
+    }
     
     
 	/**

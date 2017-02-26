@@ -17,18 +17,8 @@ public class Game
         
         // new game
         GameArena screen = new GameArena(1000,500);
-        
-        // add the image to the screen
-        
-        // main menu instances - once button pressed, returns levelType int (1,2,3)
-        
-        ///// while (true) {}
-        
-        // click button, then display game
-        
-        
+    
         // level instance and variables
-        // currentLevel = menu.getLevelType(); SOMETHING LIKE THAT
         Level level = new Level(currentLevel);
         
         currentLevel = level.getLevelType();
@@ -38,6 +28,7 @@ public class Game
         
         // blocks
         Block[] blocks = new Block[noOfBlocks];
+        Block[] backBlocks = new Block[noOfBlocks];
         Block groundBlock = new Block(1000, 50, 500, 475);
         
         // add ground block
@@ -50,12 +41,11 @@ public class Game
             blocks[i] = new Block(20, randHeightVal, startX, startY, "WHITE");
             
             startX += currentGap;
-            
             screen.addBlock(blocks[i]);
         }
         
-        
         // add the character
+        Bario barioCharacter = new Bario(100,445,8,screen);
         
         // make blocks move
         while (true)

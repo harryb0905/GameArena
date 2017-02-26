@@ -1,9 +1,8 @@
-public class Character{
+public class Bario{
     Rectangle character[][]  = new Rectangle[4][39];
     private double x,y;
     private double size;
     private GameArena ga;
-
 
     private int curBario[] = {0,1,0,2};
     private int curBarioCounter = 0;
@@ -63,7 +62,7 @@ public class Character{
             jumpCounter++;
         }
 
-    public Character(double xp,double yp,double s,GameArena g){
+    public Bario(double xp,double yp,double s,GameArena g){
         x = xp;
         y = yp;
         size = s;
