@@ -1,51 +1,86 @@
+/**
+  * Creates an array of rectangles which for the 8-bit graphic of Mario.
+  */
 public class Bario{
-    Rectangle character[][]  = new Rectangle[4][39];
-    private double x,y;
-    private double size;
+
+    Rectangle character[][]  = new Rectangle[4][39];//this contains the for arrays that when visualised in the game arena create Mario.
+                                                    //in the multidimentional array the first three row represent Mario running an the last one is him jumping.
+    private double x,y;//this are the variables that represent Mario's position of the middle closest to his foot pixel.    
+    private double size;// mario is made up of squares and this holds the quantity of pixels in one side of the square. 
     private GameArena ga;
 
     private Rectangle collisionBox = new Rectangle(x,(y-size*6.5),(size*15),(size*16),"BROWN");
     
+    //in order to make the animation of how Mario moves
+    //he hast to go from the sprite in the first array to
+    //the sprite in the second array back to the fist sprite
+    //to the third and then back to the first one.
+    //curBario holds that sequence
+    //
+    //curBarioCounter holds an index that points to 
+    //the current sprite in the  curBario array
     private int curBario[] = {0,1,0,2};
     private int curBarioCounter = 0;
+    // a variable the is used to slow down the change between sprites in the move method 
+    private int slowDown = 0;
 
     //variables realated with the jumping method
     public boolean jumping = false;
     private int jumpCounter = 1;
-    private double speed = -10;
+    private double speed = -7;
 
-    public void move(int speed){
-        if(!jumping){
-            devisualise(curBario[curBarioCounter]);
-            curBarioCounter++;
-            if(curBarioCounter>3)
-                curBarioCounter = 0;
-            visualise(curBario[curBarioCounter]);
-            for(int i = 0;i<speed;i++)
-                ga.pause();   
+    /**
+     * Animates Mario's movement
+     * This method won't execute if Mario is currently jumping.
+     * putit just once in the while(true) loop
+     */
+    public void move(){
+        if(slowDown==7){
+            if(!jumping){
+                devisualise(curBario[curBarioCounter]);
+                curBarioCounter++;
+                if(curBarioCounter>3)
+                    curBarioCounter = 0;
+                visualise(curBario[curBarioCounter]);   
+            }
         }
-        
+        slowDown++;
+        if(slowDown>7) slowDown=0;
     }
 
+    /**
+     * Adds the current sprite of Mario to the Game arena.
+     * @param number of the current sprite
+     */
     public void visualise(int cur){
         for(int i = 0;i<character[cur].length;i++){
             ga.addRectangle(character[cur][i]);
         }
     }
-
+    /**
+     * Removes the current sprite of Mario to the Game arena.
+     * @param number of the current sprite
+     */
     public void devisualise(int cur){
         for(int i = 0;i<character[cur].length ;i++){
             ga.removeRectangle(character[cur][i]);
         }
     }
-    public void jump(double heigth,int speed1){
+
+    /**
+     * Makes Mario
+     * @param the heigth at which Mario jumps(it doesn't equate to any unit of measurement)
+     * it is prefereble to call the method if(gameAreanaInstantce.upPressed||CharacterInstance.jumping)
+     */
+    public void jump(double heigth){
 
         if(!jumping){
             devisualise(curBario[curBarioCounter]);
             visualise(3);
+            jumping = true;
         }
         
-        jumping = true;
+        
         if(jumpCounter != heigth && jumpCounter != (heigth+1)){
                 for(int i = 0;i<character[3].length;i++){
                     character[3][i].setYPosition(character[3][i].getYPosition() + speed);
@@ -57,26 +92,31 @@ public class Bario{
             }
             if(jumpCounter == ((heigth*2)-1)){
                 jumping = false;
-                jumpCounter = 0;
+                jumpCounter = 1;
                 speed *= -1;
                 devisualise(3);
                 visualise(curBario[curBarioCounter]);
             }
             jumpCounter++;
-            for(int i = 0;i<speed1;i++)
-                ga.pause();
-        
         }
-    
-    
+    /**
+     * Checks if Mario collides
+     * @param Rectangle object to be checked for collision
+     * @return a boolean value if it colides
+     */
     public boolean collides(Rectangle r){
         return (collisionBox.getXPosition() < r.getXPosition() + r.getWidth() &&
                 collisionBox.getXPosition() + r.getWidth() > r.getXPosition() &&
                 collisionBox.getYPosition() < r.getYPosition() + r.getHeight() &&
                 collisionBox.getYPosition() + collisionBox.getHeight() > r.getYPosition());
     }
-    
-    
+    /**
+     * Checks if Mario collides
+     * @param x position of Mario's feet
+     * @param y position of Mario's feet
+     * @param size
+     * @param Game arena whe the game is going to be played
+     */
     public Bario(double xp,double yp,double s,GameArena g){
         x = xp;
         y = yp;

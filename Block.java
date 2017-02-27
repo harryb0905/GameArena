@@ -2,7 +2,7 @@ public class Block
 {
     // fixed block width + heights
     private int width;
-    private static final int[] blockHeights = {10, 20, 30, 40, 50};
+    private static final int[] blockHeights = {30, 35, 40, 45, 50};
     
     // shape variables
     private int height;

@@ -4,7 +4,7 @@ public class Level {
     private static final int[] blocksPerLvl = {20,40,60};
     
     // block gaps for each level type (e,m,h)
-    private static int[] gaps = {400,350,300};
+    private static int[] gaps = {500,450,350};
     
     private int levelType;
     

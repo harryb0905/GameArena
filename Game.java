@@ -69,9 +69,9 @@ public class Game
             //if (xBlockPositions[currentBlockToPass])
             
             // move the bario character
-            barioCharacter.move(0);
+            barioCharacter.move();
             if(screen.upPressed() || barioCharacter.jumping)
-                barioCharacter.jump(7,0);
+                barioCharacter.jump(15);
             
             //if(barioCharacter.collides()
             
