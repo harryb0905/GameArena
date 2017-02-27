@@ -9,7 +9,7 @@ public class Block
     private String colour;
     private double xPosition;
     private double yPosition;
-    private int speed = 5;
+    private int speed = 10;
     
     // returns width of block
     public int getWidth()

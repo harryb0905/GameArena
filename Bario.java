@@ -4,22 +4,24 @@ public class Bario{
     private double size;
     private GameArena ga;
 
+    private Rectangle collisionBox = new Rectangle(x,(y-size*6.5),(size*15),(size*16),"BROWN");
+    
     private int curBario[] = {0,1,0,2};
     private int curBarioCounter = 0;
 
     //variables realated with the jumping method
     public boolean jumping = false;
     private int jumpCounter = 1;
-    private double speed = -5;
+    private double speed = -10;
 
-    public void move(){
+    public void move(int speed){
         if(!jumping){
             devisualise(curBario[curBarioCounter]);
             curBarioCounter++;
             if(curBarioCounter>3)
                 curBarioCounter = 0;
             visualise(curBario[curBarioCounter]);
-            for(int i = 0;i<7;i++)
+            for(int i = 0;i<speed;i++)
                 ga.pause();   
         }
         
@@ -36,7 +38,7 @@ public class Bario{
             ga.removeRectangle(character[cur][i]);
         }
     }
-    public void jump(double heigth){
+    public void jump(double heigth,int speed1){
 
         if(!jumping){
             devisualise(curBario[curBarioCounter]);
@@ -48,6 +50,7 @@ public class Bario{
                 for(int i = 0;i<character[3].length;i++){
                     character[3][i].setYPosition(character[3][i].getYPosition() + speed);
                 }
+                collisionBox.setYPosition(collisionBox.getYPosition() + speed);
             }
             if(jumpCounter == heigth){
                 speed *= -1;
@@ -60,8 +63,20 @@ public class Bario{
                 visualise(curBario[curBarioCounter]);
             }
             jumpCounter++;
+            for(int i = 0;i<speed1;i++)
+                ga.pause();
+        
         }
-
+    
+    
+    public boolean collides(Rectangle r){
+        return (collisionBox.getXPosition() < r.getXPosition() + r.getWidth() &&
+                collisionBox.getXPosition() + r.getWidth() > r.getXPosition() &&
+                collisionBox.getYPosition() < r.getYPosition() + r.getHeight() &&
+                collisionBox.getYPosition() + collisionBox.getHeight() > r.getYPosition());
+    }
+    
+    
     public Bario(double xp,double yp,double s,GameArena g){
         x = xp;
         y = yp;

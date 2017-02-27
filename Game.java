@@ -28,6 +28,7 @@ public class Game
         
         // blocks
         Block[] blocks = new Block[noOfBlocks];
+        int currentBlockToPass = 0;
         Block[] backBlocks = new Block[noOfBlocks];
         Block groundBlock = new Block(1000, 50, 500, 475);
         
@@ -45,7 +46,7 @@ public class Game
         }
         
         // add the character
-        Bario barioCharacter = new Bario(100,445,8,screen);
+        Bario barioCharacter = new Bario(100,445,6,screen);
         
         // make blocks move
         while (true)
@@ -65,11 +66,19 @@ public class Game
                 blocks[j].setXPosition(currentXPos);
             }
             
+            //if (xBlockPositions[currentBlockToPass])
+            
+            // move the bario character
+            barioCharacter.move(0);
+            if(screen.upPressed() || barioCharacter.jumping)
+                barioCharacter.jump(7,0);
+            
+            //if(barioCharacter.collides()
+            
             // pause the window
-            screen.pause();
-            
-            // check if you collide with a block, stop if necessary
-            
+            for(int i=0;i<3;i++)
+                screen.pause();
+               
             // xPos of last block is off screen, end
             if (currentXPos <= 0)
             {
