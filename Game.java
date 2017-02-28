@@ -46,7 +46,7 @@ public class Game
         }
         
         // add the character
-        Bario barioCharacter = new Bario(100,445,6,screen);
+        Bario barioCharacter = new Bario(100,448,6,screen);
         
         // make blocks move
         while (true)
@@ -71,7 +71,7 @@ public class Game
             // move the bario character
             barioCharacter.move();
             if(screen.upPressed() || barioCharacter.jumping)
-                barioCharacter.jump(15);
+                barioCharacter.jump(12);
             
             //if(barioCharacter.collides()
             

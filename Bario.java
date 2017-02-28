@@ -27,7 +27,7 @@ public class Bario{
     //variables realated with the jumping method
     public boolean jumping = false;
     private int jumpCounter = 1;
-    private double speed = -7;
+    private double speed = -9;
 
     /**
      * Animates Mario's movement
@@ -35,7 +35,7 @@ public class Bario{
      * putit just once in the while(true) loop
      */
     public void move(){
-        if(slowDown==7){
+        if(slowDown==4){
             if(!jumping){
                 devisualise(curBario[curBarioCounter]);
                 curBarioCounter++;
@@ -45,7 +45,7 @@ public class Bario{
             }
         }
         slowDown++;
-        if(slowDown>7) slowDown=0;
+        if(slowDown>4) slowDown=0;
     }
 
     /**
