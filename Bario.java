@@ -3,7 +3,7 @@
   */
 public class Bario{
 
-    Rectangle character[][]  = new Rectangle[4][39];//this contains the for arrays that when visualised in the game arena create Mario.
+    Rectangle character[][]  = new Rectangle[4][40];//this contains the for arrays that when visualised in the game arena create Mario.
                                                     //in the multidimentional array the first three row represent Mario running an the last one is him jumping.
     private double x,y;//this are the variables that represent Mario's position of the middle closest to his foot pixel.    
     private double size;// mario is made up of squares and this holds the quantity of pixels in one side of the square. 
@@ -110,6 +110,14 @@ public class Bario{
                 collisionBox.getYPosition() < r.getYPosition() + r.getHeight() &&
                 collisionBox.getYPosition() + collisionBox.getHeight() > r.getYPosition());
     }
+    
+    // returns the collision box of mari0
+    public Rectangle getCollisionBox()
+    {
+        return character[3][39];
+    }
+    
+    
     /**
      * Checks if Mario collides
      * @param x position of Mario's feet
@@ -253,6 +261,7 @@ public class Bario{
         character[3][36] = new Rectangle((x+size*2.5),(y-size*9),(size*4),size,"#653b3b");
         character[3][37] = new Rectangle(x,(y-size*13),(size*9),size,"RED");
         character[3][38] = new Rectangle((x-size),(y-size*14),(size*5),size,"RED");
+        character[3][39] = new Rectangle(x,y,size,size,"RED");
         visualise(curBario[curBarioCounter]);
     }
 }

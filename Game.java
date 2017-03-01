@@ -1,15 +1,18 @@
 public class Game
 {
-    // main method
+    // constructor
     public Game(int currentLevel)
     {
         int noOfBlocks;
         int randHeightVal;
         int blocksOnScreen;
         int currentGap;
+        int score = 0;
         
         double currentXPos = 0;
         double currentSpeed;
+        
+        boolean finished = false;
         
         // starting pos
         int startX = 1000;
@@ -24,12 +27,9 @@ public class Game
         currentLevel = level.getLevelType();
         noOfBlocks = level.getNoOfBlocks(currentLevel);
         currentGap = level.getGap(currentLevel);
-        blocksOnScreen = noOfBlocks;
         
         // blocks
         Block[] blocks = new Block[noOfBlocks];
-        int currentBlockToPass = 0;
-        Block[] backBlocks = new Block[noOfBlocks];
         Block groundBlock = new Block(1000, 50, 500, 475);
         
         // add ground block
@@ -47,6 +47,7 @@ public class Game
         
         // add the character
         Bario barioCharacter = new Bario(100,448,6,screen);
+        Rectangle collisionBox = barioCharacter.getCollisionBox();
         
         // make blocks move
         while (true)
@@ -64,26 +65,32 @@ public class Game
                 
                 // set xPosition of each block to new position
                 blocks[j].setXPosition(currentXPos);
+                
+                // check for collision
+                if (collisionBox.didCollide(collisionBox, blocks[j]))
+                {
+                    finished = true;
+                    break;
+                }
+                
+                // increase score
+                if (collisionBox.getXPosition() == blocks[j].getXPosition())
+                    score++;
             }
-            
-            //if (xBlockPositions[currentBlockToPass])
             
             // move the bario character
             barioCharacter.move();
             if(screen.upPressed() || barioCharacter.jumping)
                 barioCharacter.jump(12);
             
-            //if(barioCharacter.collides()
-            
             // pause the window
             for(int i=0;i<3;i++)
                 screen.pause();
                
             // xPos of last block is off screen, end
-            if (currentXPos <= 0)
+            if (currentXPos <= 0 || finished)
             {
-                // finish
-                System.out.println("GAME FINISHED! RETRY?");
+                System.out.println("GAME FINISHED! YOU SCORED: " + score);
                 break;
             }
         }

@@ -76,6 +76,23 @@ public class Rectangle
 	{
 		return height;
 	}
+    
+    /**
+     * Obtains the height of this Rectangle.
+     * @return the height of this Rectangle,in pixels.
+     */
+    public boolean didCollide(Rectangle rect, Block block)
+    {
+        if (rect.getXPosition() < block.getXPosition() + block.getWidth() &&
+            rect.getXPosition() + block.getWidth() > block.getXPosition() &&
+            rect.getYPosition() < block.getYPosition() + block.getHeight() &&
+            rect.getYPosition() + rect.getHeight() > block.getYPosition())
+        {
+            return true;
+        }
+        else
+            return false;
+    }
 
 	/**
 	 * Obtains the colour of this Rectangle.
